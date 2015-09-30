@@ -37,7 +37,7 @@
             </form> 
             </div>-->
             <!-- List group -->
-            <?php echo validation_errors();?>
+            
             <form method="post" action="create_project" name="myform">
               <ul class="list-group">
                 <li class="list-group-item">
@@ -66,21 +66,9 @@
                 <li class="list-group-item">
                     <label>Categoría</label>
                     <select class="form-control" name="categoriaProyecto">
-                        <option selected="selected" value="Arte">Arte</option>
-                        <option value="Comics">Comics</option>
-                        <option value="Artesanias">Artesanías</option>
-                        <option value="Baile">Baile</option>
-                        <option value="Diseño">Diseño</option>
-                        <option value="Moda">Moda</option>
-                        <option value="Cine y video">Cine y vídeo</option>
-                        <option value="1">Comida</option>
-                        <option value="1">Juegos</option>
-                        <option value="1">Periodismo</option>
-                        <option value="1">Música</option>
-                        <option value="1">Fotografía</option>
-                        <option value="1">Publicaciones</option>
-                        <option value="1">Tecnología</option>
-                        <option value="1">Teatro</option>
+                        <?php foreach ($categories as $categories_item) : ?>
+                            <option value="<?php echo $categories_item["ID"];?>"><?php echo $categories_item["Categoria_TXT"];?></option>
+                        <?php endforeach ?>
                     </select>
                 </li>
                 <li class="list-group-item">

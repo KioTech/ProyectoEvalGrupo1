@@ -5,7 +5,7 @@ class Project extends CI_Controller {
 	public function __construct()
     {
 		parent::__construct();
-		
+		$this->load->model('project_model');
 	}
 
 	public function index()
@@ -23,25 +23,28 @@ class Project extends CI_Controller {
     	//set rules validation
     	$this->form_validation->set_rules('tituloProyecto','Titulo del Proyecto', 'required');
 
-    	 if ($this->form_validation->run() == FALSE)
-                {
-                        $this->load->view('Projects/project_view');
-                }
-                else
-                {
-                    $tituloProyecto = $this->input->post('tituloProyecto');    
-                    $imagenProyecto = $this->input->post('imagenProyecto');
-					$descripcionBreveProyecto = $this->input->post('descripcionBreveProyecto');
-					$categoriaProyecto = $this->input->post('categoriaProyecto');
-					$ubicacionProyecto = $this->input->post('ubicacionProyecto');
-					$metaProyecto = $this->input->post('metaProyecto');
-					$descripcionProyecto = $this->input->post('descripcionProyecto');
-					$this->load->model('project_model');
-					$this->project_model->insert_project($tituloProyecto,$imagenProyecto,$descripcionBreveProyecto,$categoriaProyecto,$ubicacionProyecto,$metaProyecto,$descripcionProyecto);
-                    echo "Insertado Correctamente";
-                    //$this->load->view('formsuccess');
-                }
-
-    	
+    	if ($this->form_validation->run() == FALSE)
+        {
+            //obtiene categoria
+			$data['categories'] = $this->project_model->get_categories();
+            $this->load->view('Projects/project_view', $data);
+        }
+        else
+        {
+            $tituloProyecto = $this->input->post('tituloProyecto');    
+            $imagenProyecto = $this->input->post('imagenProyecto');
+			$descripcionBreveProyecto = $this->input->post('descripcionBreveProyecto');
+			$categoriaProyecto = $this->input->post('categoriaProyecto');
+			$ubicacionProyecto = $this->input->post('ubicacionProyecto');
+			$metaProyecto = $this->input->post('metaProyecto');
+			$descripcionProyecto = $this->input->post('descripcionProyecto');
+			//$this->load->model('project_model');
+			$this->project_model->insert_project($tituloProyecto,$imagenProyecto,$descripcionBreveProyecto,$categoriaProyecto,$ubicacionProyecto,$metaProyecto,$descripcionProyecto);
+            echo "Insertado Correctamente";
+            //$this->load->view('formsuccess');
+        }	
 	}
+
+	//
+
 }

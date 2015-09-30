@@ -20,8 +20,9 @@ class Project_model extends CI_Model {
 
     $this->db->insert('t005_proyectos_ma', $data);
   }
-  public function get_projects()
+  public function get_categories()
   {
-    
+    $query = $this->db->query("Select * from t007_categorias_cat");
+    return $query->result_array();
   }
 }
