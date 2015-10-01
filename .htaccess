@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
 RewriteEngine on
 Options -Indexes
-RewriteBase /work/ProyectoEvalGrupo1
+RewriteBase /ProyectoEvalGrupo1
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond $1 !^(index\.php|public|img|content|js|datos|robots\.txt|css)
@@ -9,5 +9,5 @@ RewriteRule ^(.*)$ index.php/$1 [L]
 </IfModule>
 
 <IfModule !mod_rewrite.c>
-ErrorDocument 404 /work/ProyectoEvalGrupo1/index.php
+ErrorDocument 404 /ProyectoEvalGrupo1/index.php
 </IfModule>

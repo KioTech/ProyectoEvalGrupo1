@@ -25,4 +25,9 @@ class Project_model extends CI_Model {
     $query = $this->db->query("Select * from t007_categorias_cat");
     return $query->result_array();
   }
+  public function checkIfExist()
+  {
+    // return $this->db->get_where($tableName, array($field => $value), 1)->num_rows() > 0 ? false : true;
+    return $this->db->get_where($_POST['tableName'], array($_POST['field'] => $_POST['value']), 1)->num_rows() > 0 ? false : true;
+  }
 }

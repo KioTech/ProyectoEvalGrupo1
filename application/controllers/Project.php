@@ -21,7 +21,7 @@ class Project extends CI_Controller {
     	$this->load->library('form_validation');
     	
     	//set rules validation
-    	$this->form_validation->set_rules('tituloProyecto','Titulo del Proyecto', 'required');
+    	
 
     	if ($this->form_validation->run() == FALSE)
         {
@@ -46,5 +46,9 @@ class Project extends CI_Controller {
 	}
 
 	//
-
+	public function checkIfExist()
+  	{
+    	// echo json_encode($this->m_usuario->checkIfExist($_POST['tableName'], $_POST['field'], $_POST['value']));
+    	echo json_encode($this->project_model->checkIfExist());
+  	}
 }

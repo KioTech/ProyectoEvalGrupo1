@@ -1,6 +1,6 @@
 var gFunctions = { 
   geonames: function(idElement){
-    var element = $("#" + idElement.toString())
+    var element = $("#" + idElement.toString());
     element.autocomplete({
       source: function( request, response ) {
         $.ajax({
